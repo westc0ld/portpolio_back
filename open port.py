@@ -46,7 +46,7 @@ def is_new_day(last_request):
 
 # MySQL 데이터베이스 연결 설정 함수
 def get_database_connection():
-    return pymysql.connect(host, user, password, db, charset="utf8mb4")
+    return pymysql.connect(host=host, user=user , password=password, db=db, charset="utf8mb4")
 
 # 새로운 스레드 생성 함수
 def create_new_thread():
