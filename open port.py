@@ -149,9 +149,14 @@ def send_message():
     except Exception as e:
         return jsonify({"description": "데이터 저장 중 오류가 발생하였습니다: " + str(e)})
 
+
     finally:
-        cursor.close()
-        db_connection.close()
+
+        if cursor:
+            cursor.close()
+
+        if db_connection:
+            db_connection.close()
 
 if __name__ == '__main__':
     print("Flask 애플리케이션이 실행되었습니다.")
