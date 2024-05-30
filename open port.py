@@ -139,6 +139,9 @@ def send_message():
 
     # 데이터베이스에 저장
     try:
+        db_connection = None
+        cursor = None
+
         db_connection = get_database_connection()
         cursor = db_connection.cursor()
         query = "INSERT INTO portpolio.portpolio_input (ip, comments, answer) VALUES (%s, %s, %s)"
