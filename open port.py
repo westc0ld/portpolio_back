@@ -139,9 +139,6 @@ def send_message():
 
     # 데이터베이스에 저장
     try:
-        db_connection = None
-        cursor = None
-
         db_connection = get_database_connection()
         cursor = db_connection.cursor()
         query = "INSERT INTO portpolio.portpolio_input (ip, comments, answer) VALUES (%s, %s, %s)"
@@ -152,14 +149,13 @@ def send_message():
     except Exception as e:
         return jsonify({"description": "데이터 저장 중 오류가 발생하였습니다: " + str(e)})
 
-
     finally:
-
-        if cursor:
+        if 'cursor' in locals() and cursor:
             cursor.close()
 
-        if db_connection:
+        if 'db_connection' in locals() and db_connection:
             db_connection.close()
+
 
 if __name__ == '__main__':
     print("Flask 애플리케이션이 실행되었습니다.")
