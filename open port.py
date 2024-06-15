@@ -97,7 +97,7 @@ def get_ai_response(user_input, thread_id):
 def send_message():
     data = request.get_json()
     user_input = data.get('user_input')
-    ip = request.headers.get('X-Real-IP', request.remote_addr)
+    ip = request.headers.get('X-Forwarded-For', request.remote_addr).split(',')[0]
 
     # 요청 횟수 가져오기
     request_data = request_counts[ip]
