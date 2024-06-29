@@ -159,4 +159,4 @@ def send_message():
 
 if __name__ == '__main__':
     print("Flask 애플리케이션이 실행되었습니다.")
-    app.run(prot=5000, debug=True)
+    app.run(port=5000, debug=True)
